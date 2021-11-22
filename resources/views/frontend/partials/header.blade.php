@@ -9,8 +9,13 @@
                 <div class="col-sm-4 offset-md-1 py-4">
                     <h4 class="text-white">Contact</h4>
                     <ul class="list-unstyled">
+                        @if(auth()->user())
+                            <li><a href="#" class="text-white">Profile</a></li>
+                            <li><a href="{{route('logout')}}" class="text-white">Logout</a></li>
+                        @else
                         <li><a href="#" class="text-white">Register</a></li>
-                        <li><a href="#" class="text-white">Login</a></li>
+                        <li><a href="{{route('login')}}" class="text-white">Login</a></li>
+                        @endif
                     </ul>
                 </div>
             </div>

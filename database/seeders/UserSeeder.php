@@ -23,5 +23,13 @@ class UserSeeder extends Seeder
             'address'=> 'Dhaka, Bangladesh',
             'role'=> 'admin',
         ]);
+        User::create([
+            'name'=>'Customer',
+            'email'=>'customer@gmail.com',
+            'password'=> Hash::make("12345"),
+            'phone'=> '01710000000',
+            'address'=> 'Dhaka, Bangladesh',
+            'role'=> 'customer',
+        ]);
     }
 }
