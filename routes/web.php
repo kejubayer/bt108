@@ -17,12 +17,18 @@ Route::get('/',[\App\Http\Controllers\Frontend\HomeController::class,'index'])->
 
 Route::get('login',[\App\Http\Controllers\Frontend\LoginController::class,'login'])->name('login');
 Route::post('login',[\App\Http\Controllers\Frontend\LoginController::class,'doLogin']);
+Route::get('register',[\App\Http\Controllers\Frontend\LoginController::class,'register'])->name('register');
+Route::post('register',[\App\Http\Controllers\Frontend\LoginController::class,'doRegister']);
+
 
 
 
 Route::middleware('auth')->group(function (){
 
     Route::get('logout',[\App\Http\Controllers\Frontend\LoginController::class,'logout'])->name('logout');
+    Route::get('profile',[\App\Http\Controllers\Frontend\LoginController::class,'profile'])->name('profile');
+    Route::post('profile',[\App\Http\Controllers\Frontend\LoginController::class,'updateProfile']);
+
 
 
     Route::prefix('dashboard')->middleware('isAdmin')->group(function (){

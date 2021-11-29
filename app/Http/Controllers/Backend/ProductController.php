@@ -91,7 +91,9 @@ class ProductController extends Controller
             'desc' => $request->input('description'),
         ];
         if (file_exists($request->file('photo'))) {
-
+            if (file_exists('uploads/products/' . $product->photo)) {
+                unlink('uploads/products/' . $product->photo);
+            }
             $newName = 'product_' . time() . '.' . $request->file('photo')->getClientOriginalExtension();
             $request->file('photo')->move('uploads/products/', $newName);
             $inputs['photo'] = $newName;
