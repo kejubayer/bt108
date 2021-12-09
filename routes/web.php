@@ -20,6 +20,9 @@ Route::post('login',[\App\Http\Controllers\Frontend\LoginController::class,'doLo
 Route::get('register',[\App\Http\Controllers\Frontend\LoginController::class,'register'])->name('register');
 Route::post('register',[\App\Http\Controllers\Frontend\LoginController::class,'doRegister']);
 
+Route::get('cart/add/{id}',[\App\Http\Controllers\Frontend\CartController::class,'addCart'])->name('cart.add');
+Route::get('cart',[\App\Http\Controllers\Frontend\CartController::class,'index'])->name('cart');
+
 
 
 

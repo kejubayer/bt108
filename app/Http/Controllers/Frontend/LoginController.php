@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
 class LoginController extends Controller
@@ -36,6 +37,8 @@ class LoginController extends Controller
           'password'=>Hash::make($request->input('password')),
         ];
         User::create($inputs);
+        Session::flash('message','Registration Successful!');
+        Session::flash('alert','success');
         return redirect()->route('login');
     }
 
@@ -96,8 +99,12 @@ class LoginController extends Controller
             if (auth()->user()->role == 'admin'){
                 return redirect()->route('dashboard');
             }
+            Session::flash('message','Login Successful!');
+            Session::flash('alert','success');
             return redirect()->route('home');
         }
+        Session::flash('message','Wrong password!');
+        Session::flash('alert','danger');
         return redirect()->back();
     }
 
