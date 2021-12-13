@@ -43,6 +43,12 @@
 
                     </tbody>
                 </table>
+
+                @if(count($cart)>0)
+                <a href="{{route('checkout')}}" class="btn btn-primary">Place Order</a>
+                @else
+                    <a href="{{route('home')}}" class="btn btn-warning">Continue Shopping</a>
+                @endif
             </div>
 
         </div>

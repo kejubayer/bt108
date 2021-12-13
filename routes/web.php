@@ -31,6 +31,8 @@ Route::middleware('auth')->group(function (){
     Route::get('logout',[\App\Http\Controllers\Frontend\LoginController::class,'logout'])->name('logout');
     Route::get('profile',[\App\Http\Controllers\Frontend\LoginController::class,'profile'])->name('profile');
     Route::post('profile',[\App\Http\Controllers\Frontend\LoginController::class,'updateProfile']);
+    Route::get('checkout',[\App\Http\Controllers\Frontend\OrderController::class,'checkout'])->name('checkout');
+    Route::post('checkout',[\App\Http\Controllers\Frontend\OrderController::class,'order']);
 
 
 
