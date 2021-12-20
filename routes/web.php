@@ -33,6 +33,7 @@ Route::middleware('auth')->group(function (){
     Route::post('profile',[\App\Http\Controllers\Frontend\LoginController::class,'updateProfile']);
     Route::get('checkout',[\App\Http\Controllers\Frontend\OrderController::class,'checkout'])->name('checkout');
     Route::post('checkout',[\App\Http\Controllers\Frontend\OrderController::class,'order']);
+    Route::get('order/{id}',[\App\Http\Controllers\Frontend\OrderController::class,'show'])->name('order.show');
 
 
 
@@ -45,6 +46,10 @@ Route::middleware('auth')->group(function (){
         Route::get('/products/edit/{id}',[\App\Http\Controllers\Backend\ProductController::class,'edit'])->name('admin.product.edit');
         Route::post('/products/edit/{id}',[\App\Http\Controllers\Backend\ProductController::class,'update']);
         Route::get('/products/delete/{id}',[\App\Http\Controllers\Backend\ProductController::class,'delete'])->name('admin.product.delete');
+
+        Route::get('orders',[\App\Http\Controllers\Backend\OrderController::class,'index'])->name('admin.order');
+        Route::get('orders/{id}',[\App\Http\Controllers\Backend\OrderController::class,'show'])->name('admin.order.show');
+        Route::post('orders/edit/{id}',[\App\Http\Controllers\Backend\OrderController::class,'edit'])->name('admin.order.edit');
     });
 });
 

@@ -70,4 +70,10 @@ class OrderController extends Controller
             return redirect()->back();
         }
     }
+
+    public function show($id)
+    {
+        $order = Order::find($id);
+        return view('frontend.order',compact('order'));
+    }
 }
